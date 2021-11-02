@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "9f4fecff-b7ea-4cbc-9ff0-2ba0ee42e4f2",
+		"name": "Configuration Exam - Students",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Import Company C Plan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version='1.0' encoding='UTF-8'?>\n<call method=\"importStandardData\" callerName=\"exam\">\n<credentials login=\"{{username}}\" password=\"{{password}}\" />\n<importDataOptions planOrActuals=\"{{value}}\" useMappings=\"false\" />\n<version isDefault=\"true\" />\n<rowData>\n   <header></header>\n   <rows>\n     <row></row>\n     <row></row>\n     <row></row>\n     <row></row>\n     <row></row>\n     <row></row>\n     <row></row>\n     <row></row>\n     <row></row>\n   </rows>\n</rowData>\n</call>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.adaptiveinsights.com/api/{{apiVersion}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"adaptiveinsights",
+						"com"
+					],
+					"path": [
+						"api",
+						"{{apiVersion}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Data Validation (Total Company)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<call method=\"exportData\" callerName=\"exam\">\n  <credentials login=\"{{username}}\" password=\"{{password}}\" />\n  <format useInternalCodes=\"true\" />\n  <version isDefault=\"true\" />\n  <filters>\n    <accounts>\n      <account code=\"Income\" isAssumption=\"false\" includeDescendants=\"true\"/>\n      <account code=\"Expenses\" isAssumption=\"false\" includeDescendants=\"true\"/>\n    </accounts>\n    <timeSpan start=\"01/2021\" end=\"12/2021\"/>\n  </filters>\n  <dimensions>\n    <dimension name=\"Product\"/>\n  </dimensions>\n</call>\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.adaptiveinsights.com/api/{{apiVersion}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"adaptiveinsights",
+						"com"
+					],
+					"path": [
+						"api",
+						"{{apiVersion}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
